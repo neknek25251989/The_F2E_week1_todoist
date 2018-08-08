@@ -257,33 +257,10 @@ body {
   margin-left: 32px;
   color: #c8c8c8;
 }
-.new-note {
-  display: flex;
-}
-.checkbox {
-  background-color: #FFFFFF;
-  width: 24px;
-  height: 24px;
-  margin-top: 24px;
-  margin-bottom: 28px;
-  margin-left: 32px;
-  margin-right: 16px;
-}
-.new-text {
+.add-new-note input {
   border-style: none;
   background-color: #F2F2F2;
   font-size: 24px;
-  margin-left: 16px;
-}
-.icon {
-  display: flex;
-  margin: 32px;
-}
-.icon-star {
-  margin-right: 16px;
-}
-.icon-pen {
-  color: #4a90e2;
   margin-left: 16px;
 }
 .new-note-detail {
@@ -301,54 +278,34 @@ body {
   margin-top: 12.3px;
   margin-left: 23px;
 }
-.time-input {
+.deadline-date-time input {
   border-style: none;
   width: 150px;
   height: 24px;
   font-size: 14px;
   text-align: center;
 }
-.comment-note {
-  margin-top: 22px;
-  margin-left: 72px;
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.comment-area {
-  margin-top: 12.3px;
-  margin-left: 23px;
-}
-.comment-textarea {
-  border-style: none;
-  width: 445px;
-  height: 120px;
-  padding: 8px 16px;
-  color: #c8c8c8;
+.button-default {
+  text-decoration: none;
+  width: 50%;
+  height: 100%;
 }
 .cancel-add {
   margin-top: 24px;
   width: 100%;
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 24px;
 }
 .cancel {
-  width: 50%;
-  height: 100%;
   background-color: #FFFFFF;
   color: #d0021B;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .add-task {
-  width: 50%;
-  height: 100%;
   background-color: #4a90e2;
   color: #FFFFFF;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
