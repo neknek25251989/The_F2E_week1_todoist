@@ -127,7 +127,7 @@ window.onload = function () {
 		var oTaskDate = document.createElement('div');
 		oTaskDate.className = 'task-date';
 		var oCalenderIcon = document.createElement('i');
-		oCalenderIcon.className = 'far fa-calendar-alt';
+		oCalenderIcon.className = 'far fa-calendar-alt fa-sm';
 		var oDate = document.createElement('span')
 		oDate.innerHTML = oDeadLine.value;
 		
