@@ -243,6 +243,7 @@ body {
   display: flex;
 }
 .task-note a {
+  color: #000;
   text-decoration: none;
   margin: auto;
   margin-left: 32px;

@@ -103,84 +103,51 @@ window.onload = function () {
 	var oDeadLine = document.getElementsByClassName('time-input')[0];
 
   oBtAdd.onclick = function () {
-	
-		var oTask = document.createElement('div');
-		oTask.className = 'task in-progress';
-    var oTaskNote = document.createElement('div')
-    oTaskNote.className = 'task-note';
-    var oTaskCheckbox = document.createElement('a');
-    oTaskCheckbox.className = 'task-checkbox';
-    // oTaskCheckbox.href = '#';
-    var oTaskCheckboxIcon = document.createElement('i');
-    oTaskCheckboxIcon.className = 'far fa-square fa-lg check-box-icon';
-    oTaskCheckbox.appendChild(oTaskCheckboxIcon);
-    var oTaskText = document.createElement('div');
-    oTaskText.className = 'task-text';
-    oTaskText.innerHTML = oNewTitle.value;
-    oTaskNote.appendChild(oTaskCheckbox);
-    oTaskNote.appendChild(oTaskText);
-		oTask.appendChild(oTaskNote);
-		
+		// hadle bar template
+		var source   = document.getElementById("entry-template").innerHTML;
+		var template = Handlebars.compile(source);
 
-		var oTaskDetail = document.createElement('div');
-		oTaskDetail.className = 'task-detail';
-		var oTaskDate = document.createElement('div');
-		oTaskDate.className = 'task-date';
-		var oCalenderIcon = document.createElement('i');
-		oCalenderIcon.className = 'far fa-calendar-alt fa-sm';
-		var oDate = document.createElement('span')
-		oDate.innerHTML = oDeadLine.value;
+		var context = {
+			content:oNewTitle.value,
+			deadline:oDeadLine.value,
+		};
+		var oTask = template(context);
+		var newTask = document.createElement('div')
+		newTask.className = 'task';
+		newTask.innerHTML = oTask;
+		oTaskList.insertBefore(newTask, oTaskList.childNodes[0]);	
 		
-		// add Deadline
-
-		if (oDeadLine.value != []) {
-			oTaskDate.appendChild(oCalenderIcon);
-			oTaskDate.appendChild(oDate);
-			oTaskDetail.appendChild(oTaskDate);
-			oTask.appendChild(oTaskDetail);
-			oDeadLine.value = null;			
-		} 
-
-		
-
-    var oTaskIcon = document.createElement('div');
-    oTaskIcon.className = 'task-icon';
-    var oStarIcon = document.createElement('i');
-		oStarIcon.className = 'far fa-star fa-lg';
-		var oXIcon = document.createElement('i');
-		oXIcon.className = 'fas fa-times fa-lg';
-		oTaskIcon.appendChild(oStarIcon);
-		oTaskIcon.appendChild(oXIcon);
-    oTask.appendChild(oTaskIcon);
-    oTaskList.insertBefore(oTask, oTaskList.childNodes[0]);
-		
-
-		
+		oDeadLine.value = null;
 		oNewTitle.value = null;
-		
-		oTaskCheckboxIcon.isCheck = false;
+
+		var oStarIcon = document.getElementsByClassName('star-icon')[0];
 		oStarIcon.isImportant = false;
 
 	// label important
-
+		
     oStarIcon.onclick = function () {
 			
 			oStarIcon.isImportant = !oStarIcon.isImportant;
+			console.log(oStarIcon.isImportant);
       this.className = this.isImportant ? 'fas fa-star fa-lg' : 'far fa-star fa-lg';
       this.style.color = this.isImportant ? '#f5a623' : '#000';
-			oTask.style.backgroundColor = this.isImportant ? '#fff2dc' : '#f2f2f2';	
+			newTask.style.backgroundColor = this.isImportant ? '#fff2dc' : '#f2f2f2';	
 
 			if (oStarIcon.isImportant == true) {
-				oTaskListImpo.insertBefore(oTask, oTaskListImpo.childNodes[0]);
+				oTaskListImpo.insertBefore(newTask, oTaskListImpo.childNodes[0]);
 			} else if (oStarIcon.isImportant == true && oTaskCheckboxIcon.isCheck == true) {
-				oTaskListComp.insertBefore(oTask, oTaskListComp.childNodes[0]);
+				oTaskListComp.insertBefore(newTask, oTaskListComp.childNodes[0]);
 			} else if (oTaskCheckboxIcon.isCheck == true)	{
-				oTaskListComp.appendChild(oTask);
+				oTaskListComp.appendChild(newTask);
 			}	else {
-				oTaskList.appendChild(oTask);
+				oTaskList.appendChild(newTask);
 			}
 
 		}
+
+		var oTaskCheckboxIcon = document.getElementsByClassName('check-box-icon')[0];
+		var oTaskText = document.getElementsByClassName('task-text')[0];
+		oTaskCheckboxIcon.isImportant = false;
 
 	// label completed
 
@@ -190,14 +157,14 @@ window.onload = function () {
       this.style.color = this.isCheck ? '#c8c8c8' : '#000';
       oTaskText.style.textDecoration = this.isCheck ? 'line-through' : 'none';
       oTaskText.style.color = this.isCheck ? '#c8c8c8' : '#000';
-			oTask.className = this.isCheck ? 'task task-completed' : 'task in-progress';
+			newTask.className = this.isCheck ? 'task task-completed' : 'task in-progress';
 
 			if (oTaskCheckboxIcon.isCheck == true) {
-				oTaskListComp.appendChild(oTask);
+				oTaskListComp.appendChild(newTask);
 			} else if (oTaskCheckboxIcon.isCheck == false && oStarIcon.isImportant == true) {
-				oTaskListImpo.appendChild(oTask);
+				oTaskListImpo.appendChild(newTask);
 			}	else {
-				oTaskList.appendChild(oTask);
+				oTaskList.appendChild(newTask);
 			}
 
 		}
@@ -205,8 +172,12 @@ window.onload = function () {
 	
 	// delete this task
 
+		var oXIcon = document.getElementsByClassName('x-icon')[0];
+
+
 		oXIcon.onclick = function () {
-			this.parentNode.parentNode.parentNode.removeChild(oTask);
+			this.parentNode.parentNode.parentNode.removeChild(newTask);
+			oTotalTask.innerHTML = oTaskCount.length + ' ' + 'task left';
 		}
 
 		oTotalTask.innerHTML = oTaskCount.length + ' ' + 'task left';

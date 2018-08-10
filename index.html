@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" href="css//minifycss/main.css">
 	<script src="javascript/minify/main.js"></script>
+	<script src="javascript/minify/handlebars-v4.0.11.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -53,29 +54,33 @@
 			</div>
 			<div class="task-list-important task-list-default"></div>
 			<div class="task-list task-list-default">
-				<!-- task example -->
-				<!-- <div class="task">
-					<div class="task-note">
-						<div class="task-checkbox"></div>
-						<div class="task-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, ex!</div>
-					</div> -->
-					<!-- tasklist detail -->
-					<!-- <div class="task-detail">
-						<div class="task-date">
-							<i class="far fa-calendar-alt"></i>
-							<span>5/14</span>
-						</div>
-						<div class="task-comment">
-							<i class="far fa-comment-dots"></i>
-						</div>
-					</div>
-					<div class="task-icon">
-						<i class="fas fa-star fa-lg"></i>  
-					</div>				 -->
-				</div>
-				<div class="task-list-completed task-list-default"></div>
+		
+		
+							
+		
+			</div>
+			<div class="task-list-completed task-list-default"></div>
 			<div class="total-task"></div>
 		</div>
 	</div>
+	<!-- task example -->
+	<script id="entry-template" type="text/x-handlebars-template">
+		<div class="task-note">
+			<a href="#" class="task-checkbox">
+				<i class="far fa-square fa-lg check-box-icon"></i>
+			</a>
+			<div class="task-text">{{content}}</div>
+		</div>			
+		<div class="task-detail">
+			<div class="task-date">
+					<i class="far fa-calendar-alt fa-sm"></i>
+					<span>{{deadline}}</span>
+			</div>
+		</div>
+		<div class="task-icon">
+			<i class="far fa-star fa-lg star-icon"></i>
+			<i class="fas fa-times fa-lg x-icon"></i>
+		</div>		
+	</script>
 </body>
 </html>
