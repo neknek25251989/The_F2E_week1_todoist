@@ -1,0 +1,1 @@
+window.onload=function(){function o(t){var e=JSON.parse(t.responseText);document.getElementById("demo").innerHTML=e.total}document.getElementById("getNumber").onclick=function(){var t,e,n;t="https://www.thef2e.com/api/signUpTotal",e=o,(n=new XMLHttpRequest).onreadystatechange=function(){4==this.readyState&&200==this.status&&e(this)},n.open("GET",t,!0),n.send()}};
