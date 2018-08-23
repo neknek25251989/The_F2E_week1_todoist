@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>My first todo list</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="css//minifycss/main.css">
+	<script src="javascript/original/main.js"></script>
+	<script src="javascript/minify/handlebars-v4.0.11.js"></script>
+</head>
+<body>
+	<div class="container"> 
+		<div class="header"> 
+			<a href="#" id="myTask">My Tasks</a>
+			<a href="#" id="inProgress">In Progress</a>
+			<a href="#" id="completed">Completed</a>
+		</div>
+		<div class="content">
+			<div class="add-new-note">
+				<i class="fas fa-plus fa-lg"></i>       
+				<input type="text" name="head-of-note" placeholder="Click here to add new note">
+				<!-- icon -->
+				<!-- <div class="icon">
+					<div class="icon-star">
+					<i class="far fa-star fa-lg"></i>  
+					</div>
+					<div class="icon-pen">
+					<i class="fas fa-pencil-alt fa-lg"></i>
+					</div>  
+					</div>       -->
+			</div>
+			<!-- task detail -->
+			<div class="new-note-detail">
+				<div class="deadline">
+					<i class="far fa-calendar-alt"></i>        
+					<span>Deadline</span>
+					<div class="deadline-date-time">          
+						<input type="date" name="date" class="time-input">						  
+					</div>
+				</div>				
+				<div class="cancel-add flex-center">
+					<a href="#" class="cancel button-default flex-center">
+						<i class="fas fa-times fa-lg"></i>
+						<span>Cancel</span>
+					</a>  
+					<a href="#" class="add-task button-default flex-center">
+						<i class="fas fa-plus fa-lg"></i>
+						<span>Add Task</span>
+					</a>
+				</div>
+			</div>			
+			<div class="task-list task-list-default"></div>
+			<div class="task-list-completed task-list-default"></div>
+			<div class="total-task"></div>
+		</div>
+	</div>
+	<!-- task example -->
+	<script id="entry-template" type="text/x-handlebars-template">
+		<div class="task-note">
+			<a href="#" class="task-checkbox">
+				<i class="far fa-square fa-lg check-box-icon"></i>
+			</a>
+			<div class="task-text">{{content}}</div>
+		</div>			
+		<div class="task-detail">
+			<div class="task-date">
+					<i class="far fa-calendar-alt fa-sm"></i>
+					<span>{{deadline}}</span>
+			</div>
+		</div>
+		<div class="task-icon">
+			<i class="fas fa-times fa-lg x-icon"></i>
+		</div>		
+	</script>
+</body>
+</html>
